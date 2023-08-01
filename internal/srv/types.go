@@ -17,4 +17,5 @@ type loadBalancer struct {
 	loadBalancerID gidx.PrefixedID
 	lbData         *lbapi.GetLoadBalancer
 	lbType         int
+	metricsPort    int32
 }

@@ -56,6 +56,9 @@ func (v helmvalues) generateLBHelmVals(lb *loadBalancer, s *Server) {
 			v.JSONValues = append(v.JSONValues, fmt.Sprintf("%s=%s", s.ServicePortKey, string(sports)))
 		}
 	}
+
+	// set the billing metrics port
+	v.Values = append(v.Values, fmt.Sprintf("%s=%d", managedHelmKeyPrefix+".metricsPortHAProxy", lb.metricsPort))
 }
 
 // func (v helmvalues) addValue(key string, value interface{}) {

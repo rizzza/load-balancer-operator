@@ -4,6 +4,10 @@ import (
 	"go.infratographer.com/x/gidx"
 )
 
+const (
+	DefaultHAProxyMetricsPort = 29782
+)
+
 func (s *Server) newLoadBalancer(subj gidx.PrefixedID, adds []gidx.PrefixedID) (*loadBalancer, error) {
 	l := new(loadBalancer)
 	l.isLoadBalancer(subj, adds)
@@ -16,6 +20,7 @@ func (s *Server) newLoadBalancer(subj gidx.PrefixedID, adds []gidx.PrefixedID) (
 		}
 
 		l.lbData = data
+		l.metricsPort = DefaultHAProxyMetricsPort
 	}
 
 	return l, nil
